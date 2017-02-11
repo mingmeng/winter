@@ -16,17 +16,17 @@ if($usernames&&$passwords){
 	    $conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
 	    $data=$conn->query("SELECT * from user where user_name='{$usernames}'");
 	    $user=$data-> fetch(PDO::FETCH_BOTH);
-	    print_r($user);
-	    /*if($user['user_pw']==$passwords)
+	    if($user['user_pw']==$passwords)
 	    {
-	    	echo "<script>alert('登陆成功!".$user['user_pw']."按下确认键跳转返回登录页面!');</script>";
+	    	echo "<script>alert('登陆成功!".$user['user_name']."按下确认键跳转返回登录页面!');</script>";
 		    echo "<script>window.location.href='$url';</script>";
 	    }
 	    else
 	    {
-	    	echo "string";
+	    	echo "<script>alert('您的账号或者密码有误,登陆失败!');</script>";
+	    	echo "<script>window.location.href='$url';</script>";
 	    }
-*/	}
+	}
 	catch(PDOException $e)
 	{
 	    echo $e->getMessage();

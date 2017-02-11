@@ -15,21 +15,19 @@ if($usernames&&$passwords){
 	    	die("<script>alert('连接失败!');</script>");
 	    }
 	    $conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-	    $data=$conn->query("SELECT * from user where user_name='{$usernames}'");
+	    $data=$conn->query("SELECT * FROM user WHERE user_name='{$usernames}'");
 	    $dy=$data-> fetch(PDO::FETCH_BOTH);
 	    if(!empty($dy))
 	    	echo "由于用户名已存在或某些不可预知的错误,注册失败！";
 	    else
 	    {
 	    	$news=$conn->query("INSERT INTO user (user_name,user_pw,user_information)
-			values('{$usernames}','{$passwords}','{$user_inf}')");
+			VALUES('{$usernames}','{$passwords}','{$user_inf}')");
 		    if($news)
 		    {
-		    	foreach ($conn->query("SELECT * from user where user_name='{$usernames}'") as $row) 
-		    	{
-		    		echo "<script>alert('注册成功!".$row['user_name']."按下确认键跳转返回登录页面!');</script>";
-		    		echo "<script>window.location.href='$url';</script>";
-		    	}
+		    	$row=$conn->query("SELECT * FROM user WHERE user_name='{$usernames}'")->fetch(PDO::FETCH_BOTH);
+		    	echo "<script>alert('注册成功!".$row['user_name']."按下确认键跳转返回登录页面!');</script>";
+		    	echo "<script>window.location.href='$url';</script>";
 		    }
 		    else
 		    	echo "注册失败！";
