@@ -5,107 +5,161 @@ body{
 	margin: 0;
 	padding: 0;
 }
-div.register,div.login{
-	height:160px;
+
+.container{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: 0 auto;
+	width: 300px;
+	height: 500px;
+	margin-left: -150px;
+	margin-top: -250px;
+	z-index: 2;
+}
+
+/*header部分*/
+.header{
+	width: 300px;
+	height: 113px;
+	margin: 0 auto;
+}
+
+/*知乎logo*/
+.logo-zhihu{
+	display: block;
+	width: 160px;
+	height: 74px;
+	margin: 0 auto;
+	background-image: url("../image/zhihu-logo.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index: 3
+}
+
+.sub-title{
+	margin-top: 16px;
+	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
+	color: #555;
+}
+
+/*登陆注册切换按钮*/
+.reg-log{
+	width: 146px;
+	height: 36px;
+    margin: 25px auto;
+}
+.reg,
+.log{
+	display: block;
+	float: left;
+	width: 72px;
+	height: 36px;
+	font-size: 18px;
+	text-align: center;
+	line-height: 36px;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.reg{
+	border-bottom:2px solid #0f88eb;
+	color: #0f88eb;
+}
+.log{
+	color: #000;
+	opacity: .5;
+}
+
+/*登录注册输入表单*/
+.register,
+.login{
+	height:170px;
 	width: 300px;
 	margin: 0 auto;
 	line-height: 30px;
 	text-align: center;
 }
-div.register{
+
+.register{
 	display: block;
 }
-div.login{
+
+.login{
 	display: none;
 }
-#username, #password{
-	width: 100%;
-	height: 50px;
-	border-width: 1px;
-	border-style: solid;
-	text-indent: 5px;
-}
-input#username{
-	border-radius: 3px 3px 0 0; 
-}
-input#password{
-	border-radius: 0 0 3px 3px;
-	border-top: none;
-}
-div.reg-log{
-	width: 300px;
-	height: 36px;
-	text-align: center;
-	margin: 0 auto;
-}
-a#reg,a#log{
-	width: 72px;
-	height: 36px;
-	border: none;
+
+/*输入框*/
+.username, 
+.password{
+	width: 268px;
+	height: 18px;
+	padding: 15.5px 15px;
 	font-size: 18px;
-	line-height: 36px;
-	cursor: pointer;
-	text-decoration: none;
+	outline: none;
+	border: none;
 }
-a#reg{
-	border-bottom:2px solid #0f88eb;
-	color: #0f88eb;
-	margin-right: 5px;
+
+.reg-inputs,
+.log-inputs{
+	width: 299px;
+	height: 101px;
+	border: 1px solid #555;
+	border-radius: 1px;
 }
-button.reg-log-submit{
-	margin-top: 8px;
-	border-radius: 0.3em;
+
+.reg-username-box,
+.reg-password-box,
+.log-username-box,
+.log-password-box{
 	width: 300px;
-	height: 40px;
+	height: 50px;
+}
+
+.reg-password-box,
+.reg-repassword-box,
+.log-password-box,
+.log-repassword-box{
+	border-top: 1px solid #555;
+}
+
+/*登陆注册按钮*/
+.reg-submit,
+.log-submit{
+	margin-top: 22px;
+	border-radius: 2px;
+	width: 300px;
+	height: 45px;
 	background-color: #0f88eb;
 	color: white;
-	border: none;
 	font-size: 20px;
+	border: none;
 	cursor: pointer;
 }
 
-div.container{
-	width: 400px;
-	height: 500px;
-	margin: 0 auto;
-	margin-top: 100px;
-	position: absolute;
-	z-index: 2;
-	margin-left: 50%;
-	left: -200px;
+.reg-submit:hover{
+	background-color: #06c;
 }
 
+.log-submit:hover{
+	background-color: #06c;
+}
 
-div.header{
-	width: 300px;
-	height: 130px;
-	margin: 0 auto;
-}
-h1#logo-zhihu{
-	background-image: url("../image/zhihu-logo.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-	width: 160px;
-	height: 74px;
-	margin: 0 auto;
-}
-h2#sub-title{
-	font-size: 18px;
-	font-weight: 400;
-	text-align: center;
-	margin-top: 16px;
-	color: #555;
-}
-div.copyright{
+/*底部copyright部分*/
+.copyright{
 	position: fixed;
-	z-index: 2;
+	bottom: 0;
 	width: 100%;
 	height: auto;
-	color: black;
-	bottom: 0;
+	color: rgb(180,180,180);
 	text-align: center;
+	font-size: 15px;
+	z-index: 2;
 }
-div#particles-js{
+/*背板particle.js*/
+.particles-js{
 	position: relative;
 	z-index: 0;
 }

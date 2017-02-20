@@ -10,8 +10,8 @@
 	}
 	var register=document.querySelector('.register');
 	var login=document.querySelector('.login');
-	var reg=document.querySelector('#reg');
-	var log=document.querySelector('#log');
+	var reg=document.querySelector('.reg');
+	var log=document.querySelector('.log');
 
 	log.addEventListener('click',function(){
 		transform(login,register);

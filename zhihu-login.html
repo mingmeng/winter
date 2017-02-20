@@ -5,48 +5,57 @@
 	<title>知乎 - 与世界分享你的知识、经验和见解</title>
 	<link rel="stylesheet" media="screen" href="css/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/zhihu-login.css" />
+	<link rel="icon" href="zhihubyliu-yang/image/mingmeng.ico" type="image/x-icon" />
 	<link rel="icon" href="https://static.zhihu.com/static/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
 	<div class="container">
 		<div class="header">
-			<h1 id="logo-zhihu"></h1>
-			<h2 id="sub-title">与世界分享你的知识、经验和见解</h2>
+			<h1 class="logo-zhihu"></h1>
+			<h2 class="sub-title">与世界分享你的知识、经验和见解</h2>
 		</div>
 		<div class="reg-log">
-			<a href="##" id="reg">注册</a>
-			<a href="##" id="log">登陆</a>
+			<a  type="button" class="reg" >注册</a>
+			<a  type="button" class="log" >登录</a>
 		</div>
 		<div class="register" >
 			<form method="POST" action="php/reg.php" onsubmit="return check();">
-				<input type="text" name="reg-username" placeholder="姓名" id="username" />
-				<input type="password" name="reg-upw" placeholder="密码" id="password" />
-				<button type="submit" class="reg-log-submit">注册知乎</button>
+				<div class="reg-inputs">
+					<div class="reg-username-box">
+						<input type="text" name="reg-username" placeholder="请输入姓名" class="username" id="username" />
+					</div>
+					<div class="reg-password-box">
+						<input type="password" name="reg-upw" placeholder="请输入密码" class="password" id="password" />
+					</div>
+				</div>
+				<button type="submit" class="reg-submit">注册知乎</button>
 			</form>
-			<p>请注意:用户名仅限A-Z,a-z以及0-9组成的字符串组合!</p>
 		</div>
 		<div class="login">
 			<form method="POST" action="php/log.php">
-				<input type="text" name="log-username" id="username" placeholder="姓名" />
-				<input type="password" name="log-upw" id="password" placeholder="密码" />
-				<button type="submit" class="reg-log-submit">登陆</button>
+				<div class="log-inputs">
+					<div class="log-username-box">
+						<input type="text" name="log-username" class="username" placeholder="姓名" id="username" />
+					</div>
+					<div class="log-password-box">
+						<input type="password" name="log-upw" id="password" class="password" placeholder="密码" />
+					</div>
+				</div>
+					<button type="submit" class="log-submit">登录</button>
 			</form>
 		</div>
 	</div>
-
 	<div class="copyright">
 		<div>
-			<p>By Yang In 2017/1/20 for redrock winter holiday homework</p>
+			<p>© 2017 知乎 · 知乎圆桌 · 发现 · 移动应用 · 使用机构帐号登录 · 联系我们 · 来知乎工作<br>京 ICP 证 110745 号 · 京公网安备 11010802010035 号 · 出版物经营许可证</p>
 		</div>
 	</div>
 
-	<div id="particles-js">
-		
-	</div>
+	<div id="particles-js"></div>
 <script src="js/particles.js"></script>
 <script src="js/app.js"></script>
+<script type="text/javascript" src="js/zhihu-login.js"></script>
 
 </body>
-<script type="text/javascript" src="js/zhihu-login.js"></script>
 </html>
