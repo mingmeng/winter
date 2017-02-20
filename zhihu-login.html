@@ -15,19 +15,19 @@
 			<h2 id="sub-title">与世界分享你的知识、经验和见解</h2>
 		</div>
 		<div class="reg-log">
-			<button type="button" id="reg">注册</button>
-			<button type="button" id="log">登陆</button>
+			<a href="##" id="reg">注册</a>
+			<a href="##" id="log">登陆</a>
 		</div>
 		<div class="register" >
-			<form method="POST" action="reg.php" onsubmit="return check();">
-				<input type="text" name="reg-username" placeholder="姓名" id="username" style="ime-mode: disabled;" />
+			<form method="POST" action="php/reg.php" onsubmit="return check();">
+				<input type="text" name="reg-username" placeholder="姓名" id="username" />
 				<input type="password" name="reg-upw" placeholder="密码" id="password" />
 				<button type="submit" class="reg-log-submit">注册知乎</button>
 			</form>
 			<p>请注意:用户名仅限A-Z,a-z以及0-9组成的字符串组合!</p>
 		</div>
 		<div class="login">
-			<form method="POST" action="log.php">
+			<form method="POST" action="php/log.php">
 				<input type="text" name="log-username" id="username" placeholder="姓名" />
 				<input type="password" name="log-upw" id="password" placeholder="密码" />
 				<button type="submit" class="reg-log-submit">登陆</button>

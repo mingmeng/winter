@@ -19,11 +19,11 @@ div.login{
 	display: none;
 }
 #username, #password{
-	width: 300px;
+	width: 100%;
 	height: 50px;
 	border-width: 1px;
 	border-style: solid;
-	font-size: 20px;
+	text-indent: 5px;
 }
 input#username{
 	border-radius: 3px 3px 0 0; 
@@ -37,18 +37,20 @@ div.reg-log{
 	height: 36px;
 	text-align: center;
 	margin: 0 auto;
-	margin-bottom: 10px;
-	margin-top: 8px;
 }
-div.container{
-	width: 400px;
-	height: 500px;
-	margin: 0 auto;
-	margin-top: 150px;
-	position: absolute;
-	z-index: 2;
-	margin-left: 50%;
-	left: -200px;
+a#reg,a#log{
+	width: 72px;
+	height: 36px;
+	border: none;
+	font-size: 18px;
+	line-height: 36px;
+	cursor: pointer;
+	text-decoration: none;
+}
+a#reg{
+	border-bottom:2px solid #0f88eb;
+	color: #0f88eb;
+	margin-right: 5px;
 }
 button.reg-log-submit{
 	margin-top: 8px;
@@ -61,18 +63,19 @@ button.reg-log-submit{
 	font-size: 20px;
 	cursor: pointer;
 }
-button#reg,button#log{
-	width: 72px;
-	height: 36px;
-	border: none;
-	font-size: 18px;
-	background-color: transparent;
-	cursor: pointer;
+
+div.container{
+	width: 400px;
+	height: 500px;
+	margin: 0 auto;
+	margin-top: 100px;
+	position: absolute;
+	z-index: 2;
+	margin-left: 50%;
+	left: -200px;
 }
-button#reg{
-	border-bottom:2px solid #0f88eb;
-	color: #0f88eb;
-}
+
+
 div.header{
 	width: 300px;
 	height: 130px;

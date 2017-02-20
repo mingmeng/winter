@@ -1,0 +1,212 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "黑体";
+	outline: none;
+}
+
+
+/*顶部工具栏*/
+div.top-tool{
+	height: 45px;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	z-index:100;
+	background: linear-gradient(to bottom,#086ed5,#055db5);
+    background-image: linear-gradient(rgb(8, 110, 213), rgb(5, 93, 181));
+}
+/*定位div*/
+div.top-container{
+	margin: 0 auto;
+	background-color: initial;
+	height: 100%;
+	width: 960px;
+}
+/*searchbox*/
+div.div-top-search{
+	margin:7px 0 0 12px;
+	width: auto;
+	height: 32.8px;
+	float: left;
+}
+/*toolbar logo*/
+a.zhihu-logo{
+	height: 100%;
+	width: 61px;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: auto;
+	float: left;
+	background-image: url(../image/zhihu-main-top.png);
+	text-decoration: none;
+	border: none;
+	display: block;
+	line-height: 1.7;
+}
+
+
+/*搜索表单*/
+input.top-search{
+	width: 327px;
+	float: left;
+	height: 100%;
+	line-height: 17px;
+	font-size: 14px;
+	text-indent: 10px;
+	background-color: #e1eaf2;
+	border-radius: 4px 0 0 4px;
+	border: 1px solid #045bb2;
+	border-right: none;
+}
+button.top-search-button{
+	width: 40px;
+	float: left;
+	cursor: pointer;
+	height: 100%;
+	border-radius: 0 4px 4px 0;
+	background-color: #0e7bef;
+	border: 1px solid #045bb2;
+	border-left: none;
+}
+div.top-search-button-bgimage{
+	background-image:  url(../image/放大镜.svg);
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+/*工具栏四个按键*/
+div.top-list-box{
+	float: left;
+	width: auto;
+	height: 100%;
+}
+ul,li{
+	list-style: none;
+	float: left;
+	height: 100%;
+}
+a.top-list-box{
+	height: 45px;
+	width: 54px;
+	cursor: auto;
+	display: inline-block;
+	line-height: 45px;
+	color: #eee;
+	text-decoration: none;
+}
+a.top-list-box:hover {
+	color: #fff;
+}
+ul.ul-top-list{
+	margin-left: 18px;
+	text-align: center;
+}
+li.li-top-list{
+	width: 54px;
+	text-align: center;
+}
+li#bg-li-top-list{
+	background: linear-gradient(to bottom,#055fb8,#095fb3);
+    background-image: linear-gradient(rgb(5, 95, 184), rgb(9, 95, 179));
+}
+
+
+/*用户信息区*/
+div.top-user-proflie{
+	width: 120px;
+	height: 100%;
+	margin-left: 15px;
+	float: right;
+	font-size: 14px;
+}
+div.top-user-proflie:hover{
+	background: linear-gradient(to bottom,#055fb8,#095fb3);
+    background-image: linear-gradient(rgb(5, 95, 184), rgb(9, 95, 179));
+}
+div.top-user-proflie:hover ul.top-drop-list{
+	display: block;
+}
+a.a-top-user-proflie{
+	text-decoration: none;
+	border: none;
+	line-height: 45px;
+	color: #eee;
+	width: 100%;
+	height: 100%;
+	display: block;
+
+}
+a.a-top-user-proflie:hover{
+	color: #fff;
+	box-shadow: inset 0 0 2px rgba(0,0,0,.12);
+}
+img.top-user-portrait{
+	width: 25px;
+	height: 25px;
+	position: relative;
+	top: 8px;
+	margin-left: 15px;
+}
+
+/*二级导航*/
+ul.top-drop-list{
+	border-radius: 0 0 3px 3px;
+	display: none;
+}
+li.top-drop-list-li{
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom,#055fb8,#095fb3);
+    background-image: linear-gradient(rgb(5, 95, 184), rgb(9, 95, 179));
+    border:1px solid #0d5aa5;
+    color: 
+    box-shadow:0 1px 1px rgba(0,0,0,.4);
+}
+li#a0{
+	border-radius: 0 0 3px 3px;
+}
+a.top-drop-list-a{
+	text-decoration: none;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	line-height: 45px;
+	display: block;
+}
+a.top-drop-list-a:hover{
+	background-color: #0267cc;
+}
+img.top-drop-list-img{
+	width: 25px;
+	height: 25px;
+	position: relative;
+	top: 6px;
+	margin-right: 6px;
+	margin-left: 10px;
+}
+
+/*提问按钮*/
+button.top-new-question-btn{
+	background: linear-gradient(to bottom,#0e7bef,#0d73da);
+    background-image: linear-gradient(rgb(14, 123, 239), rgb(13, 115, 218));
+	box-shadow:0 1px 2px rgba(0,0,0,.05), 
+	inset 0 1px 1px rgba(255,255,255,.15);
+	color: #fff;
+	font-size: 14px;
+    text-align: center;
+    border: 1px solid #045bb2;
+	float: right;
+	display: block;
+    width: 66px;
+    height: 32px;
+    line-height: 30px;
+    margin-top: 7px;
+    border-radius: 4px;
+    cursor: pointer;
+}

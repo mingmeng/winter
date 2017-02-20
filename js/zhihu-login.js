@@ -35,6 +35,15 @@
     	}
 	}
 
+/*	var isNull=function(str1,str2){
+		if (str1!=null&&str2!=null) {
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}*/			//js判断表单是否有空值,继续完善谢谢 2017/2/11
+
 	var check=function(){
 		var input=document.querySelector('#username');
 		var str=input.value;
