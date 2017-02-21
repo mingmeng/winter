@@ -2,7 +2,7 @@
 session_start();
 $usernames=$_POST['log-username'];
 $passwords=md5($_POST['log-upw']);
-$url="../zhihu-login.html";
+$url="../zhihu.php";
 header( 'Content-Type:text/html;charset=utf-8 ');
 if($usernames!=''&&$passwords!=''&&ctype_alnum($usernames)&&ctype_alnum($passwords)){
 	try
@@ -18,8 +18,8 @@ if($usernames!=''&&$passwords!=''&&ctype_alnum($usernames)&&ctype_alnum($passwor
 	    $user=$data-> fetch(PDO::FETCH_BOTH);
 	    if($user['user_pw']==$passwords)
 	    {
-	    	$_SESSION['username']==$usernames;
-	    	echo "<script>alert('登陆成功!".$user['user_name']."按下确认键跳转返回登录页面!');</script>";
+	    	$_SESSION['username']=$usernames;
+	    	echo "<script>alert('登陆成功!".$user['user_name']."按下确认键进入主页!');</script>";
 		    echo "<script>window.location.href='$url';</script>";
 	    }
 	    else

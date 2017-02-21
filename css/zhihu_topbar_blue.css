@@ -1,7 +1,6 @@
 *{
 	margin: 0;
 	padding: 0;
-	font-family: "黑体";
 	outline: none;
 }
 
@@ -12,6 +11,7 @@ div.top-tool{
 	width: 100%;
 	position: fixed;
 	top: 0px;
+	left: 0;
 	z-index:100;
 	background: linear-gradient(to bottom,#086ed5,#055db5);
     background-image: linear-gradient(rgb(8, 110, 213), rgb(5, 93, 181));
