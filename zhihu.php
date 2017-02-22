@@ -17,6 +17,7 @@ if(!isset($_SESSION['username'])){
 <body>
 <!-- 	<div class="ask-question-area-background"></div>
  -->
+ 	<!-- 提问区域 -->
 	<div class="hide-area">
 		<div class="hide-area-container">
 			<div class="hide-area-header">
@@ -27,7 +28,7 @@ if(!isset($_SESSION['username'])){
 			</div>
 		 	<div class="ask-question-area">
 		 		<p class="title"></p>
-		 		<form method="POST"  id="ques-submit-form">
+		 		<form method="GET"  id="ques-submit-form" action="php/sumary.php">
 		 		<div class="ques-title">
 		 			<textarea name="ques-title" class="ques-title" cols="68" rows="1" style="resize: none;border: none;" placeholder="写下你的问题..." form="ques-submit-form"></textarea> 
 		 		</div>
@@ -35,7 +36,7 @@ if(!isset($_SESSION['username'])){
 		 			问题说明(可选):
 		 		</div>
 		 		<div class="ques-content">
-		 			<textarea name="ques-title" class="ques-content" cols="65" rows="3" style="resize: none;border: none;" placeholder="在这里写下你的问题..." form="ques-submit-form"></textarea> 
+		 			<textarea name="ques-content" class="ques-content" cols="65" rows="3" style="resize: none;border: none;" placeholder="在这里写下你的问题..." form="ques-submit-form"></textarea> 
 		 		</div>
 		 			<input type="submit" name="ques-submit" class="ques-submit" />
 		 		</form>
@@ -110,29 +111,66 @@ if(!isset($_SESSION['username'])){
 	<!--内容区域-->
 	<div class="main-container">
 		<div class="question-area">
+
+			<!--功能区域包括提问写文章-->
 			<div class="to-do-list">
 				<img src="image/mingmeng.ico" class="con-user-icon" />
 				<ul class="user-function-list">
 					<li class="function-list">
-						<a href="" class="a-function-list">
+						<a class="a-function-list">
 							<img src="image/提问.svg" class="img-function-list" />
 							提问
 						</a>
 					</li>
 					<li class="function-list">
-						<a href="" class="a-function-list">
+						<a class="a-function-list">
 							<img src="image/写文章.svg" class="img-function-list"/>
 							写文章
 						</a>
 					</li>
 				</ul>
 			</div>
+
+			<!--问题显示区域-->
 			<div class="news-area-header">
 				<img src="image/最新动态.svg" class="news-img" />
 				最新动态
 			</div>
+			
+			<?php
+				$qt_url="php/question.php?id=";
+				$u_url="user.php?id=";
+				$config=require_once 'php/config.php';
+				$conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
+		       	$conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+		       	$sql="SELECT * FROM ques ORDER BY ques_id DESC";
+			   	$result=$conn->query($sql)->fetch(PDO::FETCH_ASSOC)['ques_id'];
 
+			   	for ($id=$result; $id>0  ; $id--) 
+			   	{ 
+			   		$sql="SELECT * FROM ques WHERE ques_id={$id}";
+			   		$result=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
+			   		$classes1="a_question";
+				   	$classes2="iq_question_title";
+					$classes3="iq_question_author";
+					$classes4="iq_ques_content";
+					echo "<div class=".$classes1.">";
+					echo "<a class=".$classes2." href=".$qt_url.$result['ques_id'].">".$result['ques_title']."</a>";
+					echo "<a class=".$classes3." href=".$u_url.$result['ques_id'].">".$result['questioner']."</a>";
+					echo "<div class=".$classes4.">".$result['ques_content']."</div>";
+					echo "</div>";
+			   	}
+
+			?>	
 		</div>
+		<!--可能会出现的侧边栏-->
+
+	</div>
+
+	<script type="text/javascript" src="js/zhihu-mainpage.js"></script>
+</body>
+</html>
+
 		<!--可能会出现的侧边栏-->
 <!-- 		<div class="right-side-bar">
 			<ul class="right-side-bar-ul">
@@ -141,8 +179,3 @@ if(!isset($_SESSION['username'])){
 				<li class="right-side-bar-li"></li>
 			</ul>
 		</div> -->
-	</div>
-
-	<script type="text/javascript" src="js/zhihu-mainpage.js"></script>
-</body>
-</html>
