@@ -139,7 +139,7 @@ if(!isset($_SESSION['username'])){
 			
 			<?php
 				$qt_url="php/question.php?id=";
-				$u_url="user.php?id=";
+				$u_url="php/user.php?id=";
 				$config=require_once 'php/config.php';
 				$conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
 		       	$conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
