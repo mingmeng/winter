@@ -1,7 +1,6 @@
 <?php
 $usernames=$_POST['reg-username'];
 $passwords=md5($_POST['reg-upw']);
-$user_inf=$_POST['reg-username']."_inf";
 $url="../zhihu-login.html";
 header( 'Content-Type:text/html;charset=utf-8 ');
 if($usernames!=''&&$passwords!=''&&ctype_alnum($usernames)&&ctype_alnum($passwords)){
@@ -23,8 +22,9 @@ if($usernames!=''&&$passwords!=''&&ctype_alnum($usernames)&&ctype_alnum($passwor
 	    }
 	    else
 	    {
-	    	$news=$conn->query("INSERT INTO user (user_name,user_pw,user_information)
-			VALUES('{$usernames}','{$passwords}','{$user_inf}')");
+	    	$numbers=$conn->query("SELECT * FROM user ORDER BY id desc")->fetch(PDO::FETCH_ASSOC)['id']+1;
+	    	$news=$conn->query("INSERT INTO user (id,user_name,user_pw)
+			VALUES({$numbers},'{$usernames}','{$passwords}')");
 		    if($news)
 		    {
 		    	$row=$conn->query("SELECT * FROM user WHERE user_name='{$usernames}'")->fetch(PDO::FETCH_BOTH);
