@@ -20,7 +20,7 @@ if($usernames!=''&&$passwords!=''&&ctype_alnum($usernames)&&ctype_alnum($passwor
 	    {
 	    	$_SESSION['id']=$user['id'];
 	    	$_SESSION['username']=$usernames;
-	    	setcookie("username", $usernames, time()+3600*24*365);  
+	    	setcookie("username", $usernames, time()+3600*24*365);
 			setcookie("password", $passwords, time()+3600*24*365);
 	    	echo "<script>alert('登陆成功!".$user['user_name']."按下确认键进入主页!');</script>";
 		    echo "<script>window.location.href='$url';</script>";

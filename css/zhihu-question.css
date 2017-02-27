@@ -15,7 +15,8 @@ div.q-d-title{
 }
 div.q-d-content{
 	font-size: 13px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	text-indent: 10px;
 }
 div.border-div{
 	border-bottom: 1px solid #000; 
@@ -127,9 +128,12 @@ input.answer-area-input-submit{
 div.ind-answer{
 	width: 100%;
 	border-top: 1px solid #000;
+	margin-top: 5px;
+	margin-bottom: 15px;
 }
 div.ind-answer-header{
 	height: 30px;
+	margin-top: 3px;
 }
 span.ind-answer-header-username{
 	text-indent: 10px;
@@ -141,8 +145,15 @@ span.ind-answer-header-username{
 	font-weight: 600;
 }
 div.ind-answer-content{
-	margin-top: 5px;
+	margin-top: 8px;
 	font-size: 13px;
 	line-height: 17px;
 	text-indent: 13px;
+	margin-bottom: 30px;
+}
+
+/*底部回答区域*/
+div.answer-area-in-bottom{
+	height: 400px;
+	margin-top: 50px;
 }

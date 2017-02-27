@@ -17,5 +17,5 @@
 	$insert_into->bindParam(6,$ques, PDO::PARAM_INT);
 	$insert_into->execute();
 	echo "回答成功,将在三秒后跳转";
-	header("refresh:3;url=../question.php?id=".$ques);
+	header("location:../question.php?id=".$ques);
 ?>

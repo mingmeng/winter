@@ -63,9 +63,10 @@ div.a_question{
 a.iq_question_title{
 	font-size: 25px;
 	font-weight: 700;
-	color: blue;
+	color: #259;
 	margin-top: 8px;
-	display: block;
+	display: inline-block;
+	text-decoration: none;
 }
 a.iq_question_author{
 	font-size: 15px;
@@ -73,7 +74,11 @@ a.iq_question_author{
 	margin-top: 2px;
 	margin-bottom: 8px;
 	text-indent: 15px;
-	display: block;
+	display: inline-block;
+	text-decoration: none;
+}
+a.iq_question_title:hover,a.iq_question_author:hover{
+	text-decoration: underline;
 }
 div.iq_ques_content{
 	font-size: 17px;
@@ -199,3 +204,7 @@ div.ques-warning{
 	line-height: 22px;
 	margin-top: 15px;
 }
+
+
+
+

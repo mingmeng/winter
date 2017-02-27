@@ -1,8 +1,28 @@
 <?php
 session_start();
 if(!isset($_SESSION['username'])){
-	header('location:zhihu-login.html');
+	header('location:zhihu-login.php');
 }
+/*if ($_COOKIE['username']&&$_COOKIE['password'])
+{
+	$config=require_once 'php/config.php';
+	$conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
+	$conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+	$sql="SELECT * FROM user WHERE user_name={$_COOKIE['username']}";
+	if($conn->query($sql)->fetch(PDO::FETCH_ASSOC)['user_pw']==$_COOKIE['password'])
+	{
+		$_SESSION['username']=$_COOKIE['username'];
+	}
+	else
+	{
+		header('location:zhihu-login.php');
+	}
+}*/
+/*else
+{
+	header('location:zhihu-login.php');
+}*/
+
 ?>
 
 
@@ -64,7 +84,7 @@ if(!isset($_SESSION['username'])){
 
 			<div class="top-list-box">
 				<ul class="ul-top-list">
-					<li class="li-top-list" id="bg-li-top-list"><a class="top-list-box" href="">首页</a></li>
+					<li class="li-top-list" id="bg-li-top-list"><a class="top-list-box" href="zhihu.php">首页</a></li>
 					<li class="li-top-list"><a class="top-list-box" href="">话题</a></li>
 					<li class="li-top-list"><a class="top-list-box" href="">发现</a></li>
 					<li class="li-top-list"><a class="top-list-box" href="">消息</a></li>
@@ -97,7 +117,7 @@ if(!isset($_SESSION['username'])){
 						</a>
 					</li>
 					<li class="top-drop-list-li" id="a0">
-						<a href="" class="top-drop-list-a">
+						<a href="php/quit.php" class="top-drop-list-a">
 							<img src="image/退出.svg" class="top-drop-list-img">退出
 						</a>
 					</li>
@@ -147,15 +167,19 @@ if(!isset($_SESSION['username'])){
 			   	$result=$conn->query($sql)->fetch(PDO::FETCH_ASSOC)['ques_id'];
 
 			   	for ($id=$result; $id>0  ; $id--) 
-			   	{ 
+			   	{
 			   		$sql="SELECT * FROM ques WHERE ques_id={$id}";
 			   		$result=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
+			   		if (!$result) {
+			   			continue;
+			   		}
 			   		$classes1="a_question";
 				   	$classes2="iq_question_title";
 					$classes3="iq_question_author";
 					$classes4="iq_ques_content";
 					echo "<div class=".$classes1.">";
 					echo "<a class=".$classes2." href=".$qt_url.$result['ques_id'].">".$result['ques_title']."</a>";
+					echo "<br>";
 					echo "<a class=".$classes3." href=".$u_url.$result['ques_id'].">".$result['questioner']."</a>";
 					echo "<div class=".$classes4.">".$result['ques_content']."</div>";
 					echo "</div>";

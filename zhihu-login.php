@@ -1,4 +1,29 @@
-﻿<!DOCTYPE html>
+<?php
+session_start();
+
+if (isset($_SESSION['id'])) {
+	header("location:zhihu.php");
+}
+/*if (isset($_COOKIE['username'])&&isset($_COOKIE['password'])) 
+{
+	$config=require_once 'php/config.php';
+	$conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
+	$conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+	$sql="SELECT * FROM user WHERE user_name={$_COOKIE['username']}";
+	if($conn->query($sql)->fetch(PDO::FETCH_ASSOC)['user_pw']==$_COOKIE['password'])
+	{
+		header("location:zhihu.php");
+	}
+}*/
+
+?>
+
+
+
+
+
+
+<!DOCTYPE html>
 <meta charset="utf-8">
 <html>
 <head>
@@ -23,7 +48,7 @@
 			<form method="POST" action="php/reg.php" onsubmit="return check();">
 				<div class="reg-inputs">
 					<div class="reg-username-box">
-						<input type="text" name="reg-username" placeholder="请输入姓名" class="username" id="username" />
+						<input type="text" name="reg-username" placeholder="请输入用户名" class="username" id="username" />
 					</div>
 					<div class="reg-password-box">
 						<input type="password" name="reg-upw" placeholder="请输入密码" class="password" id="password" />
@@ -36,7 +61,7 @@
 			<form method="POST" action="php/log.php">
 				<div class="log-inputs">
 					<div class="log-username-box">
-						<input type="text" name="log-username" class="username" placeholder="姓名" id="username" />
+						<input type="text" name="log-username" class="username" placeholder="用户名" id="username" />
 					</div>
 					<div class="log-password-box">
 						<input type="password" name="log-upw" id="password" class="password" placeholder="密码" />

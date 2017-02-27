@@ -36,7 +36,7 @@ session_start();
 
 				<div class="top-list-box">
 					<ul class="ul-top-list">
-						<li class="li-top-list" id="bg-li-top-list"><a class="top-list-box" href="">首页</a></li>
+						<li class="li-top-list" id="bg-li-top-list"><a class="top-list-box" href="zhihu.php">首页</a></li>
 						<li class="li-top-list"><a class="top-list-box" href="">话题</a></li>
 						<li class="li-top-list"><a class="top-list-box" href="">发现</a></li>
 						<li class="li-top-list"><a class="top-list-box" href="">消息</a></li>
@@ -69,7 +69,7 @@ session_start();
 							</a>
 						</li>
 						<li class="top-drop-list-li" id="a0">
-							<a href="" class="top-drop-list-a">
+							<a href="php/quit.php" class="top-drop-list-a">
 								<img src="image/退出.svg" class="top-drop-list-img">退出
 							</a>
 						</li>
@@ -131,20 +131,34 @@ session_start();
 				$classc="ind-answer-header-username";
 				$classd="ind-answer-content";
 				for ($i=$answer_startid; $i >0 ; $i--) {
-					$answer_arr=$conn->query("SELECT * FROM answer WHERE answer_id={$i}")->fetch(PDO::FETCH_ASSOC); 
-					echo "<div class=".$classa.">
-					<div class=".$classb.">
-						<span class=".$classc.">";
-					 echo $conn->query("SELECT user_name FROM user where id={$answer_arr['answer_author']}")->fetch(PDO::FETCH_ASSOC)['user_name'];
-					 echo "</span>
-					</div>
-					<div class=".$classd.">";
-					echo $answer_arr['answer_content'];
-					echo "</div></div>";
+					$answer_arr=$conn->query("SELECT * FROM answer WHERE answer_id={$i}")->fetch(PDO::FETCH_ASSOC);
+					if ($answer_arr['answer_pq_id']!=$request_q_id) {
+						continue;
+					}
+					else
+					{
+						echo "<div class=".$classa."><div class=".$classb."><span class=".$classc.">";
+						echo $conn->query("SELECT user_name FROM user where id={$answer_arr['answer_author']}")->fetch(PDO::FETCH_ASSOC)['user_name'];
+						echo "</span>
+						</div>
+						<div class=".$classd.">";
+						echo $answer_arr['answer_content'];
+						echo "</div></div>";
+					}
+					
 				}
 						
 				?>
+				<div class="answer-area-in-bottom">
+					<div class="answer-area-input">
+						<form action="php/answer.php" method="GET">
+							<textarea class="answer-area-input-ta" cols="60" rows="7" placeholder="在这里写下你的回答...." autofocus="autofocus" name="answer_content"></textarea>
+							<input type="submit" name="answer-area-input-submit" class="answer-area-input-submit" />
+							<input type="hidden" name="ques_id" value="<?php echo $request_q_id; ?>" />
+						</form>
+					</div>
 				</div>
+			</div>
 		</div>
 
 			<!-- 回答区域 -->
