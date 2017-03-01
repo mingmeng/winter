@@ -111,7 +111,6 @@ textarea.answer-area-input-ta{
 	white-space: pre-line;
 }
 input.answer-area-input-submit{
-	background-color: blue;
 	border: none;
 	border-radius: 4px;
 	font-size: 13px;
@@ -122,12 +121,14 @@ input.answer-area-input-submit{
 	cursor: pointer;
 	text-align: center;
 	float: right;
+	background: linear-gradient(to bottom,#0e7bef,#0d73da);
+    background-image: linear-gradient(rgb(14, 123, 239), rgb(13, 115, 218));
 }
 
 /*单个回答*/
 div.ind-answer{
 	width: 100%;
-	border-top: 1px solid #000;
+	border-top: 1px solid #ccc;
 	margin-top: 5px;
 	margin-bottom: 15px;
 }
@@ -135,14 +136,16 @@ div.ind-answer-header{
 	height: 30px;
 	margin-top: 3px;
 }
-span.ind-answer-header-username{
+a.ind-answer-header-username{
 	text-indent: 10px;
 	line-height: 30px;
 	font-size: 22px;
 	width: auto;
-	margin-left: 5px;
-	margin-top: 4px;
+	margin-left: 2px;
 	font-weight: 600;
+	display: inline-block;
+	text-decoration: none;
+	color: #259;
 }
 div.ind-answer-content{
 	margin-top: 8px;

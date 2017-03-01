@@ -11,7 +11,7 @@ session_start();
 	<meta charset="utf-8">
 	<html>
 	<head>
-		<title><?php echo $data['ques_title']; ?></title>
+		<title><?php echo $data['ques_title']; ?> - 问题</title>
 		<link rel="icon" href="https://static.zhihu.com/static/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="css/zhihu_topbar_blue.css">
 		<link rel="stylesheet" type="text/css" href="css/zhihu-question.css">
@@ -54,7 +54,9 @@ session_start();
 					</a>
 					<ul class="top-drop-list">
 						<li class="top-drop-list-li">
-							<a href="" class="top-drop-list-a">
+							<?php
+							$t_url='user.php?id=';
+							echo "<a href=".$t_url.$_SESSION['id']; ?> class="top-drop-list-a">
 								<img src="image/人像.svg" class="top-drop-list-img">我的主页
 							</a>
 						</li>
@@ -117,7 +119,8 @@ session_start();
 				<div class="border-div"></div>
 
 
-				<div class="q-numbers">N个回答
+				<div class="q-numbers">
+					<span>N个回答</span>
 					<a class="w-answer">
 						写回答
 					</a>
@@ -137,9 +140,11 @@ session_start();
 					}
 					else
 					{
-						echo "<div class=".$classa."><div class=".$classb."><span class=".$classc.">";
-						echo $conn->query("SELECT user_name FROM user where id={$answer_arr['answer_author']}")->fetch(PDO::FETCH_ASSOC)['user_name'];
-						echo "</span>
+						$test_user=$conn->query("SELECT * FROM user where id={$answer_arr['answer_author']}")->fetch(PDO::FETCH_ASSOC);
+						$t_url='user.php?id=';
+						echo "<div class=".$classa."><div class=".$classb."><a href=".$t_url.$test_user['id']." class=".$classc.">";
+						echo $test_user['user_name'];
+						echo "</a>
 						</div>
 						<div class=".$classd.">";
 						echo $answer_arr['answer_content'];
@@ -152,7 +157,7 @@ session_start();
 				<div class="answer-area-in-bottom">
 					<div class="answer-area-input">
 						<form action="php/answer.php" method="GET">
-							<textarea class="answer-area-input-ta" cols="60" rows="7" placeholder="在这里写下你的回答...." autofocus="autofocus" name="answer_content"></textarea>
+							<textarea class="answer-area-input-ta" cols="60" rows="7" placeholder="在这里写下你的回答...."  name="answer_content"></textarea>
 							<input type="submit" name="answer-area-input-submit" class="answer-area-input-submit" />
 							<input type="hidden" name="ques_id" value="<?php echo $request_q_id; ?>" />
 						</form>
@@ -175,7 +180,7 @@ session_start();
 						请写下你的回答...
 					</div>
 					<form action="php/answer.php" method="GET">
-						<textarea class="answer-area-input-ta" cols="60" rows="7" placeholder="在这里写下你的回答...." autofocus="autofocus" name="answer_content"></textarea>
+						<textarea class="answer-area-input-ta" cols="60" rows="7" placeholder="在这里写下你的回答...."  name="answer_content"></textarea>
 						<input type="submit" name="answer-area-input-submit" class="answer-area-input-submit" />
 						<input type="hidden" name="ques_id" value="<?php echo $request_q_id; ?>" />
 					</form>
@@ -187,15 +192,3 @@ session_start();
 	<script type="text/javascript" src="js/zhihu-question.js"></script>
 	</body>
 	</html>
-				<!-- 	<div class="ind-answer">
-				<div class="ind-answer-header">
-					<span class="ind-answer-header-username">
-					<?php echo $conn->query("SELECT user_name FROM user where id={$answer_arr['answer_author']}")->fetch(PDO::FETCH_ASSOC)['user_name']; ?>
-					</span>
-				</div>
-				<div class="ind-answer-content">
-					<?php
-						echo $answer_arr['answer_content'];
-					?>
-				</div>
-			</div> -->

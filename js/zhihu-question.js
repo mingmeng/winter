@@ -5,8 +5,9 @@ var opeanarea_b=document.querySelector('a.w-answer');
 var answerarea=document.querySelector('div.answer-area-container');
 var offbtn_b=document.querySelector('button.answer-area-off-btn');
 
-
-
+var a=document.querySelectorAll('div.ind-answer');
+var b=document.querySelector('div.q-numbers span');
+b.innerHTML=a.length+'个回答';
 
 offbtn.addEventListener('click',function () {
 	quesarea.style.display='none';

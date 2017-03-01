@@ -102,7 +102,9 @@ if(!isset($_SESSION['username'])){
 				</a>
 				<ul class="top-drop-list">
 					<li class="top-drop-list-li">
-						<a href="" class="top-drop-list-a">
+						<?php
+							$t_url='user.php?id=';
+							echo "<a href=".$t_url.$_SESSION['id']; ?>  class="top-drop-list-a">
 							<img src="image/人像.svg" class="top-drop-list-img">我的主页
 						</a>
 					</li>
@@ -170,6 +172,8 @@ if(!isset($_SESSION['username'])){
 			   	{
 			   		$sql="SELECT * FROM ques WHERE ques_id={$id}";
 			   		$result=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
+			   		/*查询用户id*/
+			   		$a=$conn->query("SELECT id FROM user WHERE user_name='{$result['questioner']}'")->fetch(PDO::FETCH_ASSOC)['id'];
 			   		if (!$result) {
 			   			continue;
 			   		}
@@ -180,7 +184,7 @@ if(!isset($_SESSION['username'])){
 					echo "<div class=".$classes1.">";
 					echo "<a class=".$classes2." href=".$qt_url.$result['ques_id'].">".$result['ques_title']."</a>";
 					echo "<br>";
-					echo "<a class=".$classes3." href=".$u_url.$result['ques_id'].">".$result['questioner']."</a>";
+					echo "<a class=".$classes3." href=".$u_url.$a.">".$result['questioner']."</a>";
 					echo "<div class=".$classes4.">".$result['ques_content']."</div>";
 					echo "</div>";
 			   	}
@@ -194,12 +198,3 @@ if(!isset($_SESSION['username'])){
 	<script type="text/javascript" src="js/zhihu-mainpage.js"></script>
 </body>
 </html>
-
-		<!--可能会出现的侧边栏-->
-<!-- 		<div class="right-side-bar">
-			<ul class="right-side-bar-ul">
-				<li class="right-side-bar-li"></li>
-				<li class="right-side-bar-li"></li>
-				<li class="right-side-bar-li"></li>
-			</ul>
-		</div> -->

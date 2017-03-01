@@ -1,0 +1,82 @@
+div.userInfo-header{
+	margin: 0 auto;
+	width: 900px;
+	margin-top: 60px;
+	box-shadow: 0 0 5px rgba(0,37,55,.15) ;
+    box-sizing: border-box;
+}
+div.userInfoHeaderBGimg{
+	width: 100%;
+	height: 160px;
+	background-color: #96a1a9;
+}
+div.userInfoArea{
+	width: 100%;
+	height: 180px;
+}
+div.userInfoIcon{
+	border:2px solid #fff;
+	height: 160px;
+	width: 160px;
+	margin-left: 30px;
+	position: relative;
+	top: -30px;
+	display: inline-block;
+	float: left;
+}
+img.userInfoIcon{
+	width: 160px;
+	height: 160px;
+	box-shadow: 0 0 5px rgba(0,37,55,.05);
+}
+div.userInfoDetails{
+	float: left;
+}
+div.userInfoDetailsName{
+	margin:5px 0 0 20px;
+	display: inline-block;
+	float: left;
+}
+div.userInfoDetailsName span{
+	font-size: 30px;
+	line-height: 36px;
+	font-weight: 500;
+	color: #259;
+}
+span.userInfoDetailsDescribe{
+	font-size: 14px;
+	margin-left: 16px;
+	margin-top: 18px;
+	float: left;
+}
+
+/*用户动态*/
+div.userInfoAnimate{
+	margin: 0 auto;
+	width: 900px;
+	margin-top: 30px;
+	box-shadow: 0 0 5px rgba(0,37,55,.15) ;
+    box-sizing: border-box;
+}
+div.userInfoAnimateChangeHeader{
+	width: 900px;
+	height: 60px;
+}
+ul.userInfoAnimate{
+	height: 60px;
+	display: block;
+	margin-left: 15px;
+}
+ul.userInfoAnimate li a{
+	display: block;
+	height: 60px;
+	line-height: 60px;
+	font-size: 22px;
+	margin-left: 15px;
+	margin-right: 20px;
+	cursor: pointer;
+	color: #259;
+}
+ul.userInfoAnimate li a:hover{
+	border-bottom: 2px solid #259;
+}
