@@ -5,6 +5,7 @@ if(!isset($_SESSION['id']))
 	header("location:zhihu-login.php");
 }
 $id=$_GET['id'];
+$nowid=$_SESSION['id'];
 $config=require_once 'php/config.php';
 $conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
 $conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
@@ -56,7 +57,11 @@ $user=$conn->query("SELECT * FROM user WHERE id={$id}")->fetch(PDO::FETCH_ASSOC)
 					</a>
 					<ul class="top-drop-list">
 						<li class="top-drop-list-li">
-							<a href="" class="top-drop-list-a">
+							<a href="
+							<?php 
+							$e_content="user.php?id=";
+							echo $e_content.$nowid; 
+							?>" class="top-drop-list-a">
 								<img src="image/人像.svg" class="top-drop-list-img">我的主页
 							</a>
 						</li>
@@ -108,7 +113,7 @@ $user=$conn->query("SELECT * FROM user WHERE id={$id}")->fetch(PDO::FETCH_ASSOC)
 			 	</div>
 			 </div>
 		</div>
-			<!-- 用户信息头部 -->
+			<!-- 用户信息 -->
 		<div class="userInfo-header">
 			<div class="userInfoHeaderBGimg">
 				
@@ -133,10 +138,6 @@ $user=$conn->query("SELECT * FROM user WHERE id={$id}")->fetch(PDO::FETCH_ASSOC)
 			</div>
 		</div>
 		
-		<?php
-		$userAnswer=$conn->query("SELECT * FROM answer WHERE answer_author={$user['id']}")->fetch(PDO::FETCH_ASSOC);
-		$question=$conn->query("SELECT * FROM ques WHERE ques_id={$userAnswer['answer_pq_id']}")->fetch(PDO::FETCH_ASSOC);
-		?>
 
 		<div class="userInfoAnimate">
 			<div class="userInfoAnimateChangeHeader">
@@ -151,6 +152,7 @@ $user=$conn->query("SELECT * FROM user WHERE id={$id}")->fetch(PDO::FETCH_ASSOC)
 							echo "他的回答";
 						} 
 						?>
+						<span class="CountAnswers"></span>
 						</a>
 					</li>
 
@@ -166,20 +168,65 @@ $user=$conn->query("SELECT * FROM user WHERE id={$id}")->fetch(PDO::FETCH_ASSOC)
 							echo "他的提问";
 						} 
 						?>
+						<span class="CountQuestions"></span>
 						</a>
 					</li>
 				</ul>
 			</div>
 		</div>
+		
+		<div class="answerContainer">
+			<?php
+			//demob找出最后一个答案的值并开始遍历
+			$demob=$conn->query("SELECT * FROM answer ORDER BY answer_id DESC")->fetch(PDO::FETCH_ASSOC);
+			for ($count=$demob['answer_id']; $count >0 ; $count--) 
+			{ 
+				$userAnswer=$conn->query("SELECT * FROM answer WHERE answer_id={$count}")->fetch(PDO::FETCH_ASSOC);
+				$question=$conn->query("SELECT * FROM ques WHERE ques_id={$userAnswer['answer_pq_id']}")->fetch(PDO::FETCH_ASSOC);
+				if ($userAnswer['answer_author']!=$id) 
+				{
+					continue;
+				}
+				else
+				{
+					echo '<div class="userInfoAnimateOne">';
+					echo '<span class="userInfoAnimateHeader">';
+					echo "<a href=question.php?id=".$question['ques_id'].">".$question['ques_title']."</a>";
+					echo '</span>';
+					echo '<div class="userInfoAnimateContent">';
+					echo $userAnswer['answer_content'];
+					echo "</div>";
+					echo "</div>";
+				}
+			}
+			?>
+		</div>
 
-			<div class="userInfoAnimateHeader">
-				<?php echo $question['ques_title']; ?>
-			</div>
-			<div class="userInfoAnimatecontent">
-				<?php echo $userAnswer['answer_content']; ?>
-			</div>
+		<div class="questionContainer">
+			<?php
+				//找出最后一个问题的值并开始遍历
+				$democ=$conn->query("SELECT * FROM ques ORDER BY ques_id DESC")->fetch(PDO::FETCH_ASSOC);
+				for ($countb=$democ['ques_id']; $countb >0 ; $countb--) 
+				{ 
+					$democ=$conn->query("SELECT * FROM ques WHERE ques_id={$countb}")->fetch(PDO::FETCH_ASSOC);
+					if($democ['questioner_id']!=$id)
+					{
+						continue;
+					}
+					else
+					{
+						echo '<div class="userInfoAnimateOne" id="a">';
+						echo "<a href=question.php?id=".$democ['ques_id'].">";
+						echo $democ['ques_title'];
+						echo "</a>";
+						echo "</div>";
+					}
+				}
+			?>
+		</div>
 
 
 <script type="text/javascript" src="js/zhihu-source-topbar.js"></script>
+<script type="text/javascript" src="js/zhihu-user.js"></script>
 </body>
 </html>

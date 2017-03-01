@@ -264,7 +264,7 @@ button.header-off-btn{
 }
 /*提问输入框*/
 div.ask-question-area{
-	width: 500px;
+	width: 450px;
 	height: 360px;
 	margin: 0 auto;
 }
@@ -309,4 +309,17 @@ div.ques-warning{
 	font-size: 13px;
 	line-height: 22px;
 	margin-top: 15px;
+}
+input.ques-submit{
+	float: right;
+	margin-top: 15px;
+	width: 40px;
+	height: 30px;
+	background: linear-gradient(to bottom,#0e7bef,#0d73da);
+    background-image: linear-gradient(rgb(14, 123, 239), rgb(13, 115, 218));
+    border:none;
+    color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05), inset 0 1px 1px rgba(255,255,255,.15);
+    cursor: pointer;
 }

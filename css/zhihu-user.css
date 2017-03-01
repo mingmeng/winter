@@ -78,5 +78,67 @@ ul.userInfoAnimate li a{
 	color: #259;
 }
 ul.userInfoAnimate li a:hover{
-	border-bottom: 2px solid #259;
+	border-bottom: 4px solid #259;
+}
+span.CountAnswers,
+span.CountQuestions{
+	background-color: #259;
+	height:22px; 
+	width:20px;
+	display: inline-block;
+	color: white;
+	font-size: 13px;
+	line-height: 22px;
+	text-align:center;
+	border-radius: 4px;
+}
+
+/*单个回答*/
+div.userInfoAnimateOne{
+	margin:0 auto;
+	width: 900px;
+	box-shadow: 0 0 3px rgba(0,37,55,.1);
+	margin-top: 15px;
+}
+span.userInfoAnimateHeader{
+	font-size: 20px;
+	line-height: 1.6;
+	font-weight: 400;
+	margin-left: 15px;
+}
+span.userInfoAnimateHeader a{
+	text-decoration: none;
+	color: #0f88eb;
+}
+div.userInfoAnimateContent{
+	font-size: 15px;
+	line-height: 27px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+/* 回答大div*/
+div.answerContainer{
+	width: 900px;
+	margin:0 auto;
+	margin-bottom: 60px;
+	display: block;
+}
+
+/* 提问大div*/
+div.questionContainer{
+	width: 900px;
+	margin: 0 auto;
+	margin-bottom: 60px;
+	display: none;
+}
+div#a{
+	font-size: 18px;
+	line-height: 2.6;
+	font-weight: 400;
+	text-indent: 15px;
+}
+div#a a{
+	text-decoration: none;
+	color: #0f88eb;
 }
