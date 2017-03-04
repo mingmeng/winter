@@ -143,7 +143,7 @@ $user=$conn->query("SELECT * FROM user WHERE id={$id}")->fetch(PDO::FETCH_ASSOC)
 			<div class="userInfoAnimateChangeHeader">
 				<ul class="userInfoAnimate">
 					<li>
-						<a>
+						<a id="on">
 						<?php
 						if ($_SESSION['id']==$id) {
 							echo "我的回答";

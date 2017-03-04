@@ -1,5 +1,9 @@
 <?php
-session_start();
+	session_start();
+	if(!isset($_SESSION['id']))
+	{
+		header('location:zhihu-login.php;');
+	}
 	$request_q_id=$_GET['id'];
 	$config=require_once 'php/config.php';
 	$conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
@@ -111,6 +115,7 @@ session_start();
 			<!-- 问题区域 -->
 		<div class="question-detail">
 			<div class="left-q-area">
+			<div class="shadow">				
 				<div class="q-d-title"><?php echo $data['ques_title']; ?></div>
 				<!-- <div><?php echo $data['questioner'];?></div> -->
 				<div class="q-d-content">
@@ -124,6 +129,7 @@ session_start();
 					<a class="w-answer">
 						写回答
 					</a>
+				</div>
 				</div>
 				
 				<?php
@@ -140,13 +146,31 @@ session_start();
 					}
 					else
 					{
-						$test_user=$conn->query("SELECT * FROM user where id={$answer_arr['answer_author']}")->fetch(PDO::FETCH_ASSOC);
+						$isliked=$conn->query("SELECT * FROM answerup WHERE doner={$_SESSION['id']}  AND answerid={$answer_arr['answer_id']}")->fetch(PDO::FETCH_ASSOC);
+						$liked=$conn->query("SELECT * FROM answerup WHERE answerid={$answer_arr['answer_id']}")->fetchAll(PDO::FETCH_ASSOC);
+						$likednum=count($liked);
+						$updpwn="php/UpDown.php?bedoner=";
+						$questionid="&question=";
+						$answerid="&answerid=";
+						$test_user=$conn->query("SELECT * FROM user WHERE id={$answer_arr['answer_author']}")->fetch(PDO::FETCH_ASSOC);
 						$t_url='user.php?id=';
 						echo "<div class=".$classa."><div class=".$classb."><a href=".$t_url.$test_user['id']." class=".$classc.">";
 						echo $test_user['user_name'];
-						echo "</a>
-						</div>
-						<div class=".$classd.">";
+						echo "</a>";
+						if (!empty($isliked)) 
+						{
+							echo "<a id='liked' >点赞 {$likednum}</a></div>";
+						}
+						else if($answer_arr['answer_author']==$_SESSION['id'])
+						{
+							echo "<a id='unlike'>点赞 {$likednum}</a></div>";
+						}
+						else
+						{
+							echo "<a href=".$updpwn.$answer_arr['answer_author'].$questionid.$answer_arr['answer_pq_id'].$answerid.$answer_arr['answer_id']." id='unlike'>点赞 {$likednum}</a></div>";
+						}
+						
+						echo "<div class=".$classd.">";
 						echo $answer_arr['answer_content'];
 						echo "</div></div>";
 					}

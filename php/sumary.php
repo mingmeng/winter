@@ -1,12 +1,13 @@
-	<?php
-		session_start();
+		<?php
+			session_start();
 			$title=$_GET['ques-title'];
 			$content=$_GET['ques-content'];
 			$author=$_SESSION['username'];
 			$config=require_once 'config.php';
 			$conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
 			$conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-			$number=$conn->query("SELECT * FROM ques ORDER BY ques_id DESC")->fetch(PDO::FETCH_ASSOC)['ques_id']+1;
+			$numbera=$conn->query("SELECT * FROM ques ORDER BY ques_id DESC")->fetch(PDO::FETCH_ASSOC);
+			$number=$numbera['ques_id']+1;
 			$demo=$conn->prepare("INSERT INTO ques (ques_id,ques_title,ques_content,questioner,questioner_id) VALUES (?,?,?,?,?)");
 			$demo->bindParam(1,$number, PDO::PARAM_INT);
 			$demo->bindParam(2,$title, PDO::PARAM_STR);

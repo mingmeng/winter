@@ -2,12 +2,24 @@ div.question-detail{
 	width: 960px;
 	height: auto;
 	margin: 0 auto;
-	margin-top: 75px;
+	margin-top: 45px;
+	background-color: #fff;
+	border-top: 10px solid #fff;
 }
+body{
+	background-color: rgba(207 ,207 ,207,.35);
+}
+
+
+
 div.left-q-area{
 	width: 584px;
-	margin-left: 45px;
+	margin: 0 auto;
 }
+div.left-q-area div.shadow{
+	padding: 10px;
+}
+
 div.q-d-title{
 	font-size:22px;
 	font-weight: 700;
@@ -19,14 +31,15 @@ div.q-d-content{
 	text-indent: 10px;
 }
 div.border-div{
-	border-bottom: 1px solid #000; 
-}
+/* 	border-bottom: 1px solid #000; 
+ */}
 div.q-numbers{
 	padding: 10px 0;
     line-height: 24px;
     font-size: 16px;
     font-weight: 600;
     width: 100%;
+    border-bottom: 1px solid #000;
 }
 a.w-answer{
 	float: right;
@@ -159,4 +172,35 @@ div.ind-answer-content{
 div.answer-area-in-bottom{
 	height: 400px;
 	margin-top: 50px;
+}
+
+a#liked,
+a#unlike{
+	float: right;
+	display: block;
+	font-size: 13px;
+	line-height: 30px;
+	text-decoration: none;
+	border:1px solid #0e7bef;
+	border-radius: 3px;
+	width: 50px;
+	text-align: center;
+}
+
+
+a#liked{
+	color: white;
+	cursor: pointer;
+	background: linear-gradient(to bottom,#0e7bef,#0d73da);
+    background-image: linear-gradient(rgb(14, 123, 239), rgb(13, 115, 218));
+}
+a#unlike{
+	color: black;
+	background-color: white;
+	cursor: pointer;
+}
+a#unlike:hover{
+	color: white;
+	background: linear-gradient(to bottom,#0e7bef,#0d73da);
+    background-image: linear-gradient(rgb(14, 123, 239), rgb(13, 115, 218));
 }

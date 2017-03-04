@@ -1,9 +1,15 @@
 /*内容区域*/
 div.main-container{
 	margin: 0 auto;
-	width: 960px;
 	height: auto;
-	margin-top: 70px;
+	width: 650px;
+	margin-top: 45px;
+	background-color: white;
+	border:10px solid white;
+	box-shadow: 0 0 5px #fff;
+}
+body{
+	background-color: rgba(207 ,207 ,207,.35);
 }
 
 
@@ -12,6 +18,7 @@ div.main-container{
 div.question-area{
 	width: 632px;
 	height: auto;
+	margin: 0 auto;
 }
 div.to-do-list{
 	width: 632px;

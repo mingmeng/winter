@@ -25,7 +25,7 @@ if(!isset($_SESSION['username'])){
 
 ?>
 
-
+<meta charset="utf-8">
 <!DOCTYPE html>
 <html>
 <head>
@@ -166,14 +166,15 @@ if(!isset($_SESSION['username'])){
 				$conn = new PDO($config['db_linkname'],$config['db_username'],$config['db_password']);
 		       	$conn -> setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
 		       	$sql="SELECT * FROM ques ORDER BY ques_id DESC";
-			   	$result=$conn->query($sql)->fetch(PDO::FETCH_ASSOC)['ques_id'];
-
+			   	$resulta=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
+			   	$result=$resulta['ques_id'];
 			   	for ($id=$result; $id>0  ; $id--) 
 			   	{
 			   		$sql="SELECT * FROM ques WHERE ques_id={$id}";
 			   		$result=$conn->query($sql)->fetch(PDO::FETCH_ASSOC);
 			   		/*查询用户id*/
-			   		$a=$conn->query("SELECT id FROM user WHERE user_name='{$result['questioner']}'")->fetch(PDO::FETCH_ASSOC)['id'];
+			   		$aa=$conn->query("SELECT id FROM user WHERE user_name='{$result['questioner']}'")->fetch(PDO::FETCH_ASSOC);
+			   		$a=$aa['id'];
 			   		if (!$result) {
 			   			continue;
 			   		}
